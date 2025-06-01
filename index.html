@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Palette Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <span class="color-dot" style="background-color: #ff5ec4;"></span>
+                    <span class="color-dot" style="background-color: #ffb852;"></span>
+                    <span class="color-dot" style="background-color: #f2ff26;"></span>
+                </div>
+                <h1>Color Palette Explorer</h1>
+            </div>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search colors...">
+                <button id="search-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="view-controls">
+                <button id="grid-view" class="active">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                    </svg>
+                </button>
+                <button id="list-view">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="8" y1="6" x2="21" y2="6"></line>
+                        <line x1="8" y1="12" x2="21" y2="12"></line>
+                        <line x1="8" y1="18" x2="21" y2="18"></line>
+                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <div class="filters">
+            <div class="filter-group">
+                <label>Sort by:</label>
+                <select id="sort-select">
+                    <option value="name">Name</option>
+                    <option value="use_count">Usage Count</option>
+                    <option value="index">Index</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Filter:</label>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="red">Reds</button>
+                    <button class="filter-btn" data-filter="yellow">Yellows</button>
+                    <button class="filter-btn" data-filter="pink">Pinks</button>
+                </div>
+            </div>
+        </div>
+
+        <main id="color-grid" class="grid-view">
+            <!-- Colors will be dynamically inserted here -->
+        </main>
+
+        <div id="color-detail" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <div class="color-preview">
+                    <div class="color-swatch"></div>
+                    <div class="color-info">
+                        <h2 id="detail-name"></h2>
+                        <p id="detail-hex"></p>
+                        <div class="color-values">
+                            <div class="value-group">
+                                <span class="label">RGB</span>
+                                <span id="detail-rgb"></span>
+                            </div>
+                            <div class="value-group">
+                                <span class="label">CMYK</span>
+                                <span id="detail-cmyk"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="color-combinations">
+                    <h3>Combinations</h3>
+                    <div id="combinations-container"></div>
+                </div>
+                <div class="color-actions">
+                    <button id="copy-hex">Copy HEX</button>
+                    <button id="copy-rgb">Copy RGB</button>
+                    <button id="copy-cmyk">Copy CMYK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
